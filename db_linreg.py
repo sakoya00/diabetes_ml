@@ -22,3 +22,7 @@ data1 = pd.DataFrame(data= np.c_[diabetes_data['data'], diabetes_data['target']]
 predictors= data1.drop('target', axis=1).values
 target_df= data1['target'].values
 X_train, X_test, y_train, y_test= train_test_split(predictors, target_df,test_size=0.30, random_state=42)
+
+linreg = LinearRegression()
+linreg.fit(X_train, y_train)
+linreg.score(X_test, y_test)
