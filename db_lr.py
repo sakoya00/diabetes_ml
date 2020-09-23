@@ -19,6 +19,6 @@ diabetes_data= load_diabetes()
 print (diabetes_data.keys())
 data1 = pd.DataFrame(data= np.c_[diabetes_data['data'], diabetes_data['target']],
                      columns= diabetes_data['feature_names'] + ['target'])
-predictors= data1.drop('target', axis=1)
-
-X_train, X_test, y_train, y_test= train_test_split(diabetes_data.data,diabetes_data.target,test_size=0.30, random_state=42)
+predictors= data1.drop('target', axis=1).values
+target_df= data1['target'].values
+X_train, X_test, y_train, y_test= train_test_split(predictors, target_df,test_size=0.30, random_state=42)
