@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-import seaborn as sns; sns.set_theme(color_codes=True)
+import seaborn as sns
 from sklearn import model_selection
 from sklearn.linear_model import LinearRegression
 from sklearn.linear_model import Ridge
