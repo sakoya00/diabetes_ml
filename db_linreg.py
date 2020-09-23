@@ -25,4 +25,10 @@ X_train, X_test, y_train, y_test= train_test_split(predictors, target_df,test_si
 
 linreg = LinearRegression()
 linreg.fit(X_train, y_train)
-linreg.score(X_test, y_test)
+
+linreg_pred= linreg.predict(X_test)
+rmse_linreg= np.sqrt(mean_squared_error(y_test, linreg_pred))
+print(rmse_linreg)
+
+linreg_r2= linreg.score(X_test, y_test)
+print(linreg_r2)
