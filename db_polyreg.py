@@ -30,6 +30,9 @@ linreg.fit(X_train, y_train)
 linreg_pred= linreg.predict(X_test)
 
 poly = PolynomialFeatures(degree = 2) 
-X_poly = poly.fit_transform(predictors) 
-  
-poly.fit(X_poly, target_df)
+X_train_poly = poly.fit_transform(X_train) 
+X_test_poly=poly.fit_transform(X_test)
+
+xx_pf=pf.fit_transform(xx)
+model2=linear_model.LinearRegression()
+model2.fit(x_train_pf,diabetes_y_train)
