@@ -16,5 +16,8 @@ from math import sqrt
 from sklearn.datasets import load_diabetes
 
 diabetes_data= load_diabetes()
+print (diabetes_data.keys())
+data1 = pd.DataFrame(data= np.c_[diabetes_data['data'], diabetes_data['target']],
+                     columns= diabetes_data['feature_names'] + ['target'])
 
 X_train, X_test, y_train, y_test= train_test_split(diabetes_data.data,diabetes_data.target,test_size=0.30, random_state=42)
