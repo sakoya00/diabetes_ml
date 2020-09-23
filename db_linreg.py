@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-import seaborn as sns
+import matplotlib as plt
 from sklearn import model_selection
 from sklearn.linear_model import LinearRegression
 from sklearn.linear_model import Ridge
@@ -30,6 +30,12 @@ linreg.fit(X_train, y_train)
 linreg_pred= linreg.predict(X_test)
 rmse_linreg= np.sqrt(mean_squared_error(y_test, linreg_pred))
 print(rmse_linreg)
+
+plt.plot(y_test, linreg_pred,'.')
+plt.plot(y_test, y_test, color="red")
+plt.xlabel("Test Set Diabetes Progression")
+plt.ylabel("Predicted Diabetes Progression ")
+plt.show()
 
 linreg_r2= linreg.score(X_test, y_test)
 print(linreg_r2)
