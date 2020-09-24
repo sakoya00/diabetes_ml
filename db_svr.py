@@ -8,8 +8,6 @@ from sklearn.linear_model import RidgeCV
 from sklearn.linear_model import Lasso
 from sklearn.linear_model import ElasticNet
 from sklearn.preprocessing import PolynomialFeatures
-from sklearn.neighbors import KNeighborsRegressor
-from sklearn.tree import DecisionTreeRegressor
 from sklearn.svm import SVR
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import r2_score
@@ -20,7 +18,7 @@ from math import sqrt
 from sklearn.datasets import load_diabetes
 
 diabetes_data= load_diabetes()
-print (diabetes_data.keys())
+#print (diabetes_data.keys())
 data1 = pd.DataFrame(data= np.c_[diabetes_data['data'], diabetes_data['target']],
                      columns= diabetes_data['feature_names'] + ['target'])
 predictors= data1.drop('target', axis=1).values
@@ -31,16 +29,17 @@ svr_reg = SVR(kernel = "rbf")
 svr_reg.fit(X_train, y_train)
 
 svr_reg_train= svr_reg.predict(X_train)
-rmse_svr_0= np.sqrt(mean_squared_error(y_train, svr_reg_train))
-print(rmse_svr_0)
+print("SVR Train RMSE: %.2f"
+      % np.sqrt(mean_squared_error(y_train, svr_reg_train)))
 
-svr_train_r2= r2_score(y_train, svr_reg_train)
-print(svr_train_r2)
+print("SVR Train R^2 Score: %.2f"
+      % r2_score(y_train, svr_reg_train))
 
 svr_reg_test= svr_reg.predict(X_test)
-rmse_svr= np.sqrt(mean_squared_error(y_test, svr_reg_test))
-print(rmse_linreg)
+print("SVR Test RMSE: %.2f"
+      % np.sqrt(mean_squared_error(y_test, svr_reg_test)))
 
-svr_test_r2= r2_score(y_test, svr_reg_test)
-print(svr_test_r2)
+print("SVR Test R^2 Score: %.2f"
+      % r2_score(y_test, svr_reg_test))
+
 
