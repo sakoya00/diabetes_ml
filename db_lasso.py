@@ -14,6 +14,7 @@ from sklearn.svm import SVR
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import r2_score
 from sklearn.model_selection import train_test_split
+from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import mean_squared_error
 from math import sqrt
 from sklearn.datasets import load_diabetes
