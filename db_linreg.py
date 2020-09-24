@@ -17,7 +17,7 @@ from math import sqrt
 from sklearn.datasets import load_diabetes
 
 diabetes_data= load_diabetes()
-print (diabetes_data.keys())
+#print (diabetes_data.keys())
 data1 = pd.DataFrame(data= np.c_[diabetes_data['data'], diabetes_data['target']],
                      columns= diabetes_data['feature_names'] + ['target'])
 predictors= data1.drop('target', axis=1).values
@@ -27,12 +27,17 @@ X_train, X_test, y_train, y_test= train_test_split(predictors, target_df,test_si
 linreg = LinearRegression()
 linreg.fit(X_train, y_train)
 
-linreg_pred= linreg.predict(X_test)
-rmse_linreg= np.sqrt(mean_squared_error(y_test, linreg_pred))
-print(rmse_linreg)
+linreg_pred_train= linreg.predict(X_train)
+print("Linear Regression Train RMSE: %.2f"
+      % np.sqrt(mean_squared_error(y_train, linreg_pred_train)))
+print("Linear Regression R^2 Score: %.2f"
+      % r2_score(y_train, linreg_pred_train))
 
-linreg_r2= linreg.score(X_test, y_test)
-print(linreg_r2)
+linreg_pred_test= linreg.predict(X_test)
+print("Linear Regression Test RMSE: %.2f"
+      % np.sqrt(mean_squared_error(y_test, linreg_pred_test)))
+print("Linear Regression Test R^2 Score: %.2f"
+      % np.sqrt(mean_squared_error(y_test, linreg_pred_test)))
 
 plt.plot(y_test, linreg_pred,'.')
 plt.plot(y_test, y_test, color="red")
