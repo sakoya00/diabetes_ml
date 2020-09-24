@@ -31,11 +31,11 @@ linreg_pred= linreg.predict(X_test)
 rmse_linreg= np.sqrt(mean_squared_error(y_test, linreg_pred))
 print(rmse_linreg)
 
+linreg_r2= linreg.score(X_test, y_test)
+print(linreg_r2)
+
 plt.plot(y_test, linreg_pred,'.')
 plt.plot(y_test, y_test, color="red")
 plt.xlabel("Test Set Diabetes Progression")
 plt.ylabel("Predicted Diabetes Progression ")
 plt.show()
-
-linreg_r2= linreg.score(X_test, y_test)
-print(linreg_r2)
