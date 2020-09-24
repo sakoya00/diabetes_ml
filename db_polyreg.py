@@ -34,7 +34,6 @@ X_train_poly = poly.fit_transform(X_train)
 X_test_poly=poly.fit_transform(X_test)
 
 linreg2=LinearRegression()
+linreg2.fit(X_train_poly, y_train)
 poly_pred= linreg2.predict(X_test_poly)
 
-plt.plot(y_test, poly_pred,'.')
-plt.plot(y_test, y_test, color="red")
