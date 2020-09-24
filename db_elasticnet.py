@@ -41,3 +41,5 @@ elastic_reg_1.fit(X_train, y_train)
 e_pred_train= elastic_reg_1.predict(X_train)
 print("train rmse: %.3f" 
       % np.sqrt(mean_squared_error(y_train,e_pred_train)))
+print("train r2: %.2f" 
+      % r2_score(y_train, e_pred_train))
