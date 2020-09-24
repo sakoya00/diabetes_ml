@@ -39,7 +39,13 @@ X_train, X_test, y_train, y_test= train_test_split(predictors, target_df,test_si
 elastic_reg_1 = ElasticNet(alpha = 0.004)
 elastic_reg_1.fit(X_train, y_train) 
 e_pred_train= elastic_reg_1.predict(X_train)
-print("train rmse: %.3f" 
+print("train rmse: %.2f" 
       % np.sqrt(mean_squared_error(y_train,e_pred_train)))
 print("train r2: %.2f" 
       % r2_score(y_train, e_pred_train))
+
+e_pred_test= elastic_reg_1.predict(X_test)
+print("test rmse: %.2f"
+      % np.sqrt(mean_squared_error(y_test,e_pred_test)))
+print("test r2: %.2f"
+      % r2_score(y_test, e_pred_train))
