@@ -29,3 +29,18 @@ X_train, X_test, y_train, y_test= train_test_split(predictors, target_df,test_si
 
 svr_reg = SVR(kernel = "rbf")
 svr_reg.fit(X_train, y_train)
+
+svr_reg_train= svr_reg.predict(X_train)
+rmse_svr_0= np.sqrt(mean_squared_error(y_train, svr_reg_train))
+print(rmse_svr_0)
+
+svr_train_r2= r2_score(y_train, svr_reg_train)
+print(svr_train_r2)
+
+svr_reg_test= svr_reg.predict(X_test)
+rmse_svr= np.sqrt(mean_squared_error(y_test, svr_reg_test))
+print(rmse_linreg)
+
+svr_test_r2= r2_score(y_test, svr_reg_test)
+print(svr_test_r2)
+
