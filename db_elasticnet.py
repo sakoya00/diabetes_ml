@@ -25,3 +25,7 @@ data1 = pd.DataFrame(data= np.c_[diabetes_data['data'], diabetes_data['target']]
                      columns= diabetes_data['feature_names'] + ['target'])
 predictors= data1.drop('target', axis=1).values
 target_df= data1['target'].values
+
+elastic_reg_0 = ElasticNetCV(cv=5, random_state=0)
+elastic_reg_0.fit(predictors, target_df)
+print(elastic_reg_0.alpha_)
