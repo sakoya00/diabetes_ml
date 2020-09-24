@@ -37,3 +37,8 @@ linreg2=LinearRegression()
 linreg2.fit(X_train_poly, y_train)
 poly_pred= linreg2.predict(X_test_poly)
 
+rmse_poly= np.sqrt(mean_squared_error(y_test, poly_pred))
+print(rmse_poly)
+
+r2_poly= linreg2.score(X_test_poly, y_test)
+print(r2_poly)
