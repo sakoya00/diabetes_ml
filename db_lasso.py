@@ -32,3 +32,13 @@ lasso_0_reg= GridSearchCV(lasso_0, lasso_alphas, scoring= "neg_root_mean_squared
 lasso_0_reg.fit(predictors, target_df)
 print(lasso_0_reg.best_params_)
 
+#best alpha = 0.05
+lasso_1_reg = Lasso(alpha=0.05)
+lasso_1_reg.fit(X_train, y_train) 
+
+lasso_pred_test= lasso_1_reg.predict(X_test)
+rmse_lasso= np.sqrt(mean_squared_error(y_test, lasso_pred_test))
+print(rmse_lasso)
+
+r2_lasso= lasso_1_reg.score(X_test, lasso_pred_test)
+print(r2_lasso)
