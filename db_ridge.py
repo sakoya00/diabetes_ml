@@ -26,7 +26,17 @@ predictors= data1.drop('target', axis=1).values
 target_df= data1['target'].values
 
 ridge_try_cv = RidgeCV(alphas=[0.01, 0.05, 0.1, 0.5, 1.0])
-ridge_reg_1= = ridge_try_cv.fit(predictors, target_df)
-model_cv.alpha_
+ridge_reg0= = ridge_try_cv.fit(predictors, target_df)
+ridge_reg0.alpha_
 
-ridge_reg = Ridge(alpha=0.01)
+X_train, X_test, y_train, y_test= train_test_split(predictors, target_df,test_size=0.30, random_state=42)
+
+ridge_reg1 = Ridge(alpha=0.01)
+ridge_reg1.fit(X_train, y_train)
+ridge_pred= ridge_reg1.predict(X_train)
+
+rmse_ridge= np.sqrt(mean_squared_error(y_test, ridge_pred))
+print(rmse_ridge)
+
+r2_ridge= ridge_reg1.score(X_test, y_test)
+print(r2_ridge)
