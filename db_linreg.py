@@ -37,7 +37,7 @@ linreg_pred_test= linreg.predict(X_test)
 print("Linear Regression Test RMSE: %.2f"
       % np.sqrt(mean_squared_error(y_test, linreg_pred_test)))
 print("Linear Regression Test R^2 Score: %.2f"
-      % np.sqrt(mean_squared_error(y_test, linreg_pred_test)))
+      % r2_score(y_test, linreg_pred_test))
 
 plt.plot(y_test, linreg_pred,'.')
 plt.plot(y_test, y_test, color="red")
