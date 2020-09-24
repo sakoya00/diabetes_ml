@@ -29,3 +29,5 @@ target_df= data1['target'].values
 elastic_reg_0 = ElasticNetCV(cv=5, random_state=0)
 elastic_reg_0.fit(predictors, target_df)
 print(elastic_reg_0.alpha_)
+
+#best alpha is .004
