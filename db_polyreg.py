@@ -7,8 +7,6 @@ from sklearn.linear_model import Ridge
 from sklearn.linear_model import Lasso
 from sklearn.linear_model import ElasticNet
 from sklearn.preprocessing import PolynomialFeatures
-from sklearn.neighbors import KNeighborsRegressor
-from sklearn.tree import DecisionTreeRegressor
 from sklearn.svm import SVR
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import r2_score
@@ -35,10 +33,15 @@ X_test_poly=poly.fit_transform(X_test)
 
 linreg2=LinearRegression()
 linreg2.fit(X_train_poly, y_train)
-poly_pred= linreg2.predict(X_test_poly)
+poly_pred_train= linreg2.predict(X_train_poly)
+poly_pred_test= linreg2.predict(X_test_poly)
 
-rmse_poly= np.sqrt(mean_squared_error(y_test, poly_pred))
-print(rmse_poly)
+print("Polynomial Regression Train RMSE: %.2f"
+      % np.sqrt(mean_squared_error(y_train, poly_pred_train)))
+print("Polynomial Regression Train R^2 Score: %.2f"
+      % r2_score(y_train, poly_pred_train))
 
-r2_poly= linreg2.score(X_test_poly, y_test)
-print(r2_poly)
+print("Polynomial Regression Test RMSE: %.2f"
+      % np.sqrt(mean_squared_error(y_test, poly_pred_test)))
+print("Polynomial Regression Train R^2 Score: %.2f"
+      % r2_score(y_test, poly_pred_test))
