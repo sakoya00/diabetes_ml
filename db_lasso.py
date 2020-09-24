@@ -25,3 +25,10 @@ data1 = pd.DataFrame(data= np.c_[diabetes_data['data'], diabetes_data['target']]
                      columns= diabetes_data['feature_names'] + ['target'])
 predictors= data1.drop('target', axis=1).values
 target_df= data1['target'].values
+
+lasso_0= Lasso()
+lasso_alphas= {"alpha": [0.01, 0.05, 0.1, 0.5, 1.0]}
+lasso_0_reg= GridSearchCV(lasso_0, lasso_alphas, scoring= "neg_root_mean_squared_error")
+lasso_0_reg.fit(predictors, target_df)
+print(lasso_0_reg.best_params_)
+
