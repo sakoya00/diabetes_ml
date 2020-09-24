@@ -42,4 +42,4 @@ e_pred_test= elastic_reg_1.predict(X_test)
 print("ElasticNet Test RMSE: %.2f"
       % np.sqrt(mean_squared_error(y_test,e_pred_test)))
 print("ElasticNet Test R^2 Score: %.2f"
-      % r2_score(y_test, e_pred_train))
+      % r2_score(y_test, e_pred_test))
