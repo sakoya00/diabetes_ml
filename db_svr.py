@@ -27,25 +27,5 @@ predictors= data1.drop('target', axis=1).values
 target_df= data1['target'].values
 X_train, X_test, y_train, y_test= train_test_split(predictors, target_df,test_size=0.30, random_state=42)
 
-elastic_reg_0 = ElasticNetCV(cv=5, random_state=0)
-elastic_reg_0.fit(predictors, target_df)
-print(elastic_reg_0.alpha_)
-
-#best alpha is .004
-elastic_reg_1 = ElasticNet(alpha = 0.004)
-elastic_reg_1.fit(X_train, y_train) 
-e_pred_train= elastic_reg_1.predict(X_train)
-X_train, X_test, y_train, y_test= train_test_split(predictors, target_df,test_size=0.30, random_state=42)
-elastic_reg_1 = ElasticNet(alpha = 0.004)
-elastic_reg_1.fit(X_train, y_train) 
-e_pred_train= elastic_reg_1.predict(X_train)
-print("train rmse: %.2f" 
-      % np.sqrt(mean_squared_error(y_train,e_pred_train)))
-print("train r2: %.2f" 
-      % r2_score(y_train, e_pred_train))
-
-e_pred_test= elastic_reg_1.predict(X_test)
-print("test rmse: %.2f"
-      % np.sqrt(mean_squared_error(y_test,e_pred_test)))
-print("test r2: %.2f"
-      % r2_score(y_test, e_pred_train))
+svr_reg = SVR(kernel = "rbf")
+svr_reg.fit(X_train, y_train)
