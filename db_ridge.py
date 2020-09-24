@@ -28,3 +28,5 @@ target_df= data1['target'].values
 regr_cv = RidgeCV(alphas=[0.01, 0.05, 0.1, 0.5, 1.0])
 model_cv = regr_cv.fit(predictors, target_df)
 model_cv.alpha_
+
+ridge_reg = Ridge(alpha=0.01)
